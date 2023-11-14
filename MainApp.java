@@ -7,13 +7,13 @@ import java.util.Scanner;
 public class MainApp {
 
     public static void main(String[] args) {
-        Date d=null;
+        DateValidator d=null;
         LocalDate date;
         Scanner sc = new Scanner(System.in);
         do {
             try {
                 System.out.print("Insert a date (dd/mm/yyyy): ");
-                d=new Date(sc.nextLine());
+                d=new DateValidator(sc.nextLine());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
