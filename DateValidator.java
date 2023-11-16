@@ -66,7 +66,6 @@ public class DateValidator {
         if (this.day == 29 && this.month == 2 && (!(this.year % 4 == 0 && !(this.year % 100 == 0)))) {
             throw new Exception("This date cannot exist");
         }
-
         localDate = LocalDate.of(year, month, day);
     }
 
