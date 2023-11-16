@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+
 import java.util.Scanner;
 
 /**
@@ -8,7 +8,6 @@ public class MainApp {
 
     public static void main(String[] args) {
         DateValidator d=null;
-        LocalDate date;
         Scanner sc = new Scanner(System.in);
         do {
             try {
@@ -20,5 +19,6 @@ public class MainApp {
         } while (d==null);
         System.out.println("Date has been validated");
         System.out.println(d);
+        sc.close();
     }
 }
