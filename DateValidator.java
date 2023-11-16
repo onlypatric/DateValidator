@@ -8,7 +8,9 @@ import java.util.Locale;
 public class DateValidator {
 
     // Regular expression for date validation
-    private static final String DATE_REGEXP = "^(3[01]|[12][0-9]|0?[1-9])(\\/|-|\\.|,|:)(1[0-2]|0?[1-9])\\2([0-9]{2})?[0-9]{2}$";
+    private static final String DATE_REGEXP = "^(3[01]|[12][0-9]|0[1-9])(\\/|-|\\.|,|:)(1[0-2]|0[1-9])\\2([0-9]{2})?[0-9]{2}$";
+
+    private static final int[] DAYS_COUNT = new int[]{31,29,31,30,31,30,31,30,30,31,30,31};
 
     // Array of characters representing possible date separators
     private static final char[] DATE_SEP_CHARS = new char[] { '-', '.', ',', ':' };
@@ -57,9 +59,8 @@ public class DateValidator {
         this.year = Integer.parseInt(splittedDate[2]);
         this.month = Integer.parseInt(splittedDate[1]);
         this.day = Integer.parseInt(splittedDate[0]);
-
         // Check for invalid dates
-        if (this.day > 29 && this.month == 2) {
+        if(day>DAYS_COUNT[this.month-1]){
             throw new Exception("This date cannot exist");
         }
         if (this.day == 29 && this.month == 2 && (!(this.year % 4 == 0 && !(this.year % 100 == 0)))) {
